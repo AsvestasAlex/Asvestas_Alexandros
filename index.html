@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Georgios Alexandros Asvestas | UAV remote sensing and GeoAI for archaeology</title>
+<meta name="description" content="Archaeologist and PhD candidate in geoinformatics at the University of the Aegean. Multi-sensor UAV survey and GeoAI for detecting buried archaeological remains.">
+<meta property="og:title" content="Georgios Alexandros Asvestas">
+<meta property="og:description" content="Multi-sensor UAV survey and GeoAI for detecting buried archaeological remains.">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="wrap bar">
+    <a class="brand" href="#main">G. A. Asvestas</a>
+    <nav aria-label="Sections">
+      <a href="#research">Research</a>
+      <a href="#now">Current work</a>
+      <a href="#publications">Publications</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap hero">
+    <h1>Georgios Alexandros Asvestas</h1>
+    <div class="hero-side">
+      <p class="lead">Archaeologist and PhD candidate in geoinformatics. I combine drone-borne thermal, multispectral and LiDAR data to locate buried archaeological remains before excavation begins.</p>
+      <ul class="now">
+        <li><strong>PhD candidate</strong>, Department of Geography, University of the Aegean</li>
+        <li><strong>Contract archaeologist</strong>, Ephorate of Antiquities of Lesvos</li>
+        <li><strong>Based in</strong> Mytilene, Lesvos, Greece</li>
+      </ul>
+    </div>
+  </div>
+
+  <figure class="banner">
+    <button class="zoom" type="button" data-full="assets/img/arisvi-lidar-2165.webp" data-caption="Arisvi, Lesvos: LiDAR terrain model with traced settlement features and fortification.">
+      <img src="assets/img/hero-1400.webp" srcset="assets/img/hero-1400.webp 1400w, assets/img/hero-2122.webp 2122w" sizes="100vw" width="1400" height="780" alt="Colour-shaded LiDAR terrain model of the hilltop site of Arisvi on Lesvos, with settlement walls traced in green and the fortification line in red">
+      <span class="zoom-hint">View full map</span>
+    </button>
+    <figcaption class="wrap">Arisvi, Lesvos. A LiDAR terrain model reveals the fortified hilltop and the settlement walls on its slopes, traced from the relief alone.</figcaption>
+  </figure>
+
+  <section id="research" aria-labelledby="research-h">
+    <div class="wrap">
+      <h2 id="research-h">Finding buried walls from the air</h2>
+      <div class="text">
+        <p class="intro">Buried walls change the ground above them. They hold heat differently from the surrounding soil, alter how plants grow, and leave faint rises in the terrain. My MSc research built a workflow that measures all three with drones, learns their signature at a site whose architecture is already documented, and applies it to a site that has never been systematically surveyed.</p>
+      </div>
+
+      <div class="sites">
+        <figure>
+          <button class="zoom" type="button" data-full="assets/img/thermi-2400.webp" data-caption="Thermi, the documented training site.">
+            <img src="assets/img/thermi-1200.webp" width="1200" height="731" loading="lazy" alt="Location map of Lesvos and aerial orthomosaic of the coastal Thermi study area">
+            <span class="zoom-hint">Enlarge</span>
+          </button>
+          <figcaption><strong>Thermi</strong>, the training site. An Early Bronze Age settlement excavated in the late 1920s, part of which was reburied; its plan survives.</figcaption>
+        </figure>
+        <figure>
+          <button class="zoom" type="button" data-full="assets/img/arisvi-2400.webp" data-caption="Arisvi, the unexplored test site.">
+            <img src="assets/img/arisvi-1200.webp" width="1200" height="731" loading="lazy" alt="Location map of Lesvos and aerial orthomosaic of the inland Arisvi study area">
+            <span class="zoom-hint">Enlarge</span>
+          </button>
+          <figcaption><strong>Arisvi</strong>, the test site. A fortified hilltop known mainly from a nineteenth-century sketch plan.</figcaption>
+        </figure>
+      </div>
+
+      <ol class="steps">
+        <li class="step">
+          <div class="step-text">
+            <h3>Survey the ground four ways</h3>
+            <p>Colour, thermal, multispectral and LiDAR flights were made the morning after rainfall, when damp soil exaggerates the thermal contrast over buried stone. Each sensor becomes a set of layers describing the same patch of ground.</p>
+            <p class="hint">Choose a layer to compare what each sensor sees at Thermi. Arrow keys also work.</p>
+          </div>
+          <div class="explorer" id="explorer">
+            <div class="groups" id="groups"></div>
+            <figure class="stage">
+              <div class="plate stage-plate"><img id="layer-img" src="assets/img/layer-03.webp" width="894" height="847" alt=""></div>
+              <figcaption><span id="layer-cap"></span> <span class="count" id="layer-count"></span></figcaption>
+            </figure>
+          </div>
+        </li>
+
+        <li class="step">
+          <div class="step-text">
+            <h3>Anchor the data in the excavated record</h3>
+            <p>The Ephorate’s excavation plan was georeferenced onto the new orthomosaic and a 1.5&nbsp;m grid was laid over the site. Each cell was labelled as over known architecture or not, after masking exposed masonry, deep shadow and dense vegetation that would mislead the sensors.</p>
+          </div>
+          <figure>
+            <button class="zoom" type="button" data-full="assets/img/classification-2400.webp" data-caption="Thermi, excavated architecture classified by period; reburied features in green.">
+              <img src="assets/img/classification-1200.webp" width="1200" height="733" loading="lazy" alt="Orthomosaic of Thermi with excavated and buried architecture coloured by period">
+              <span class="zoom-hint">Enlarge</span>
+            </button>
+            <figcaption>Thermi, with the excavated architecture classified by period and the reburied features in green.</figcaption>
+          </figure>
+        </li>
+
+        <li class="step">
+          <div class="step-text">
+            <h3>Model where buried walls are likely</h3>
+            <p>Sensor layers were condensed by principal component analysis, filtered for significance and redundancy, and fed to a logistic regression. The model is deliberately simple: each component’s contribution can be read from its coefficient, so a prediction can be traced back to its physical evidence.</p>
+            <dl class="results">
+              <div><dt>0.964</dt><dd>AUC of the combined model at Thermi</dd></div>
+              <div><dt>+12%</dt><dd>F1 over the best single-sensor model</dd></div>
+              <div><dt>21</dt><dd>components kept from four sensor domains</dd></div>
+            </dl>
+          </div>
+          <div class="figs">
+            <figure>
+              <button class="zoom" type="button" data-full="assets/img/probabilities-2400.webp" data-caption="Predicted probability of buried architecture: vegetation, thermal, terrain and combined models.">
+                <img src="assets/img/probabilities-1200.webp" width="1200" height="820" loading="lazy" alt="Four maps of Thermi showing predicted probability of buried features for the vegetation, thermal, topographic and combined models">
+                <span class="zoom-hint">Enlarge</span>
+              </button>
+              <figcaption>Predicted probability of buried architecture from the vegetation, thermal, terrain and combined models. Thermal data carry the strongest signal; the combined model is the most reliable.</figcaption>
+            </figure>
+            <figure>
+              <button class="zoom" type="button" data-full="assets/img/performance-3600.webp" data-caption="ROC and precision–recall curves with confusion matrices for the four models.">
+                <img src="assets/img/performance-1200.webp" width="1200" height="412" loading="lazy" alt="ROC curves, precision-recall curves and confusion matrices for the four models">
+                <span class="zoom-hint">Enlarge</span>
+              </button>
+              <figcaption>Performance on held-out cells. A Random Forest benchmark gained under three points of F1, at the cost of interpretability.</figcaption>
+            </figure>
+          </div>
+        </li>
+
+        <li class="step">
+          <div class="step-text">
+            <h3>Turn probabilities into places to dig</h3>
+            <p>A probability map does not tell a field team where to start. A two-stage cluster analysis, Getis-Ord Gi* followed by Local Moran’s I, keeps only statistically stable concentrations of high probability.</p>
+            <p>Transferred to Arisvi without refitting, the model narrowed the site to 1,440 priority cells covering 3,240&nbsp;m², a thirteen-fold reduction in the area to investigate.</p>
+          </div>
+          <figure>
+            <button class="zoom" type="button" data-full="assets/img/hotspots-2400.webp" data-caption="Hotspots and stable cluster cores at Thermi for each model.">
+              <img src="assets/img/hotspots-1200.webp" width="1200" height="820" loading="lazy" alt="Four maps of Thermi showing statistically significant hotspots and high-high clusters for each model">
+              <span class="zoom-hint">Enlarge</span>
+            </button>
+            <figcaption>Hotspots and stable cluster cores at Thermi. The same procedure produced the excavation targets at Arisvi.</figcaption>
+          </figure>
+        </li>
+      </ol>
+
+      <p class="note">Accepted for publication in the <em>Journal of Archaeological Science: Reports</em>. Presented at the 9th Symposium of the Hellenic Society for Archaeometry and at the Panhellenic Conference of the Hellenic Society for Non-Destructive Testing.</p>
+    </div>
+  </section>
+
+  <section id="now" aria-labelledby="now-h">
+    <div class="wrap split">
+      <h2 id="now-h">Current work: explanations archaeologists can check</h2>
+      <div class="text">
+        <p>Deep-learning models already flag candidate features in aerial data, but rarely say why, and natural landforms are routinely mistaken for walls. My doctoral research develops a multimodal model that fuses LiDAR, thermal and multispectral data, paired with explainability methods (SHAP, Grad-CAM++) that attribute each detection to its physical evidence.</p>
+        <p>The central question is whether those explanations can be trusted. The project will test their faithfulness directly and run a study in which archaeologists interpret the same data with and without them. Fieldwork takes place within the Western Megaris Archaeological Landscape Project (WeMALP), with UAV seasons planned from September 2026. Data and code will be released openly, with sensitive site locations withheld in line with Ephorate guidance.</p>
+        <p class="muted">Supervisor: Assoc. Prof. Christos Vasilakos, Remote Sensing &amp; GIS Research Group, University of the Aegean.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="recognition" aria-labelledby="rec-h">
+    <div class="wrap split">
+      <h2 id="rec-h">Recognition</h2>
+      <div class="award">
+        <p class="award-title">2nd place, Adaptation to Climate Change arena, EU TalentOn 2026</p>
+        <p class="muted">European Commission, Brest, France, September 2026. €5,000 team prize.</p>
+        <p>With team Oldtimers, for <em>Guardian</em>: an early-warning system built on the Galileo Emergency Warning Satellite Service that delivers disaster alerts to elderly people and people with disabilities without relying on smartphones or mobile networks.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="publications" aria-labelledby="pub-h">
+    <div class="wrap split">
+      <h2 id="pub-h">Publications and presentations</h2>
+      <ol class="refs">
+        <li>Asvestas, G. A., &amp; Vasilakos, C. Multi-sensor UAV predictive modelling for archaeological feature detection: from probability surfaces to excavation targets on Lesvos. <em>Journal of Archaeological Science: Reports</em>. <span class="status">Accepted</span></li>
+        <li>Asvestas, G. A., &amp; Vasilakos, C. (2025). Multi-sensor UAV remote sensing workflow for detecting buried archaeological features at Thermi (Lesvos) and its application to Arisvi (Lesvos). <em>9th Symposium of the Hellenic Society for Archaeometry</em>, Patras, 5–8 November. Oral presentation.</li>
+        <li>Asvestas, G. A., &amp; Vasilakos, C. (2025). Integrating UAV multi-sensor data for archaeological detection at Thermi, Lesvos. <em>Panhellenic Conference of the Hellenic Society for Non-Destructive Testing</em>, Ormylia Foundation, Chalkidiki, 9–11 May. Oral presentation.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="experience" aria-labelledby="exp-h">
+    <div class="wrap">
+      <h2 id="exp-h">Experience and education</h2>
+      <div class="cols">
+        <div>
+          <h3>Fieldwork</h3>
+          <ul class="entries">
+            <li><span class="when">2022 – present</span><div class="what"><strong>Contract archaeologist</strong><span>Ephorate of Antiquities of Lesvos. Systematic and rescue excavations.</span></div></li>
+            <li><span class="when">2021 – 2022</span><div class="what"><strong>Contract archaeologist</strong><span>Ephorate of Antiquities of Western Attica, Megara–Kineta. Systematic and rescue excavations.</span></div></li>
+            <li><span class="when">2020 – 2021</span><div class="what"><strong>Contract archaeologist, INTRAKAT</strong><span>Rescue excavations on development works, supervised by the Ephorates of East Attica and of Piraeus and the Islands.</span></div></li>
+            <li><span class="when">2018 – 2019</span><div class="what"><strong>Contract archaeologist</strong><span>Ephorate of Antiquities of Western Attica, Megara. Systematic and rescue excavations.</span></div></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Education</h3>
+          <ul class="entries">
+            <li><span class="when">2026 – present</span><div class="what"><strong>PhD, Geography (Geoinformatics)</strong><span>University of the Aegean</span></div></li>
+            <li><span class="when">2023 – 2025</span><div class="what"><strong>MSc, Geography and Applied Geoinformatics</strong><span>University of the Aegean. Grade 8.92/10; thesis 10/10.</span></div></li>
+            <li><span class="when">2017 – 2018</span><div class="what"><strong>MA, Greek and Eastern Mediterranean Archaeology</strong><span>National and Kapodistrian University of Athens. Thesis: The Defensive Network of Western Attica.</span></div></li>
+            <li><span class="when">2010 – 2017</span><div class="what"><strong>BA, Archaeology</strong><span>University of Thessaly</span></div></li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 class="skills-h">Skills</h3>
+      <dl class="skills">
+        <div><dt>UAV survey</dt><dd>Mission planning for RGB, LiDAR, thermal and multispectral platforms; RTK-GNSS positioning with HEPOS; EU drone pilot certificates A1/A3 and A2.</dd></div>
+        <div><dt>Photogrammetry and point clouds</dt><dd>Agisoft Metashape, WebODM, ArcGIS Drone2Map, CloudCompare, DJI Terra.</dd></div>
+        <div><dt>GIS and remote sensing</dt><dd>ArcGIS Pro, vegetation indices, thermal anomaly detection, LiDAR terrain analysis.</dd></div>
+        <div><dt>Statistics and modelling</dt><dd>Python and SPSS; PCA, logistic regression, Random Forest, cross-validation, spatial statistics.</dd></div>
+        <div><dt>Languages</dt><dd>Greek (native), English (C2), French (B2).</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="contact" aria-labelledby="contact-h">
+    <div class="wrap split">
+      <h2 id="contact-h">Get in touch</h2>
+      <div>
+        <p class="text">I welcome conversations about UAV prospection, archaeological GeoAI and fieldwork collaborations.</p>
+        <a class="mail" href="mailto:asvestasal@geo.aegean.gr">asvestasal@geo.aegean.gr</a>
+        <ul class="links">
+          <li><a href="cv/Asvestas_Academic_CV.pdf">Download CV (PDF)</a></li>
+          <li><a href="https://orcid.org/0009-0008-5518-4827">ORCID</a></li>
+          <li><a href="https://rsgis.aegean.gr">Remote Sensing &amp; GIS Research Group</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">© 2026 Georgios Alexandros Asvestas. Figures are the author’s own.</div></footer>
+
+<dialog id="viewer" aria-label="Full-size figure">
+  <div class="viewer-bar">
+    <p id="viewer-cap"></p>
+    <button type="button" id="viewer-fit" aria-pressed="false">Actual size</button>
+    <button type="button" id="viewer-close">Close</button>
+  </div>
+  <div class="viewer-body" id="viewer-body"><img id="viewer-img" src="" alt=""></div>
+</dialog>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
